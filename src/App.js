@@ -7,14 +7,19 @@ import { nanoid } from "nanoid";
 
 export default function App() {
   const noteFromLocalStorage = localStorage.getItem("notes");
-  console.log(noteFromLocalStorage);
-
   const [notes, setNotes] = React.useState(
-    JSON.parse(noteFromLocalStorage) || []
+    () => JSON.parse(noteFromLocalStorage) || [] // to avoid rendering again when state changes
   );
+
   const [currentNoteId, setCurrentNoteId] = React.useState(
     (notes[0] && notes[0].id) || ""
   );
+
+  /* 
+  const [exampleState, setExampleState] = React.useState(() =>
+    console.log("State initialization...")
+  ); 
+  */
 
   React.useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
