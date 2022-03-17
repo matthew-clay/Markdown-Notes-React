@@ -15,15 +15,11 @@ export default function App() {
     (notes[0] && notes[0].id) || ""
   );
 
-  /* 
-  const [exampleState, setExampleState] = React.useState(() =>
-    console.log("State initialization...")
-  ); 
-  */
-
   React.useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
+
+  // const noteBobdy = notes[0].body;
 
   function createNewNote() {
     const newNote = {
