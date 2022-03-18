@@ -66,8 +66,10 @@ export default function App() {
     */
   }
 
+  // delete notes
   function deleteNote(event, noteId) {
     event.stopPropagation();
+    setNotes((oldNotes) => oldNotes.filter((note) => note.id !== noteId));
   }
 
   function findCurrentNote() {
